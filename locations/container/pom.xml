@@ -149,5 +149,6 @@
             <artifactId>javax.ws.rs-api</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 </project>
