@@ -143,5 +143,15 @@ public class CampTypePlanTransformer extends AbstractTypePlanTransformer {
         public CampTypeImplementationPlan(String planData) {
             this(new BasicTypeImplementationPlan(FORMATS.get(0), planData));
         }
+
+        /**
+         * Use this constructor to save another YAML Spec.
+         * @param format
+         * @param planData
+         * @param alternateData
+         */
+        public CampTypeImplementationPlan(String format, String planData, String alternateData) {
+            this(new BasicTypeImplementationPlan(format, planData, alternateData));
+        }
     }
 }

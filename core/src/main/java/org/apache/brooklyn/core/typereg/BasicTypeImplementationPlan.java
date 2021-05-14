@@ -25,14 +25,28 @@ import org.apache.brooklyn.api.typereg.RegisteredType.TypeImplementationPlan;
 import com.google.common.base.Objects;
 
 public class BasicTypeImplementationPlan implements TypeImplementationPlan {
+    /**
+     * camp, brooklyn, tosca, etc
+     */
     final String format;
     final Object data;
+
+    /**
+     * Another Yaml Spec
+     */
+    final Object optionalData;
     
     public BasicTypeImplementationPlan(@Nullable String format, Object data) {
         this.format = format;
         this.data = data;
+        this.optionalData = null;
     }
-    
+
+    public BasicTypeImplementationPlan(@Nullable String format, Object data, Object optionalData) {
+        this.format = format;
+        this.data = data;
+        this.optionalData = optionalData;
+    }
     @Override
     public String getPlanFormat() {
         return format;
@@ -43,12 +57,17 @@ public class BasicTypeImplementationPlan implements TypeImplementationPlan {
         return data;
     }
 
+    public Object getOptionalData() {
+        return optionalData;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((data == null) ? 0 : data.hashCode());
         result = prime * result + ((format == null) ? 0 : format.hashCode());
+        result = prime * result + ((optionalData == null) ? 0 : optionalData.hashCode());
         return result;
     }
 
@@ -60,6 +79,7 @@ public class BasicTypeImplementationPlan implements TypeImplementationPlan {
         BasicTypeImplementationPlan other = (BasicTypeImplementationPlan) obj;
         if (!Objects.equal(format, other.format)) return false;
         if (!Objects.equal(data, other.data)) return false;
+        if (!Objects.equal(optionalData, other.optionalData)) return false;
         return true;
     }
     
